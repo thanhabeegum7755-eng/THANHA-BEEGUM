@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanha Beegum | About Me Quiz</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Roboto+Mono:wght@400;500&display=swap');
+:root{--wine:#551405;--dark:#100301;--light:#dedddd;--red:#4b0b0b;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--wine);color:#080504;font-family:Arial,sans-serif}.topbar{height:58px;background:var(--dark);display:flex;align-items:center;padding:0 38px;color:white;font-family:'Rye',Georgia,serif;font-size:21px;letter-spacing:.2px}.page{min-height:calc(100vh - 58px);padding:70px 5% 55px;display:flex;flex-direction:column;align-items:center}.intro{padding-top:90px}.intro-copy{width:100%;background:#f4f4f4;border-radius:38px;padding:36px 6%;font-family:'Roboto Mono',monospace;font-size:clamp(18px,3.2vw,29px);line-height:1.55;text-transform:uppercase}.pill{border:0;border-radius:999px;background:var(--light);color:#050303;font-family:'Rye',Georgia,serif;cursor:pointer;transition:transform .16s,background .16s}.pill:hover{transform:translateY(-2px);background:#fff}.ready{width:100%;padding:34px 15px;margin:42px 0 58px;font-size:clamp(25px,4vw,39px)}.yesno{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:32px}.yesno .pill{padding:22px 12px;font-size:clamp(25px,4vw,38px)}.hero-photo{display:block;width:100%;max-height:440px;object-fit:cover;object-position:center 40%;margin:0 auto}.question-page{padding-top:190px}.question{width:min(760px,92%);min-height:228px;background:var(--light);border-radius:100px;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px 32px;margin:0 auto 78px;font-family:'Rye',Georgia,serif;font-size:clamp(27px,4.4vw,43px)}.answers{width:min(620px,82%);display:flex;flex-direction:column;gap:40px}.answer{width:100%;min-height:114px;padding:22px 16px;font-size:clamp(25px,4vw,38px)}.detail-card{width:100%;background:#080201;border-radius:38px;padding:40px 6% 60px;margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:28px}.detail-title{width:min(390px,85%);background:var(--red);color:#fff;border:1px solid #641818;border-radius:999px;text-align:center;padding:21px 12px;font-size:21px}.detail-card input,.detail-card textarea{width:100%;border:0;outline:none;background:#dedddd;border-radius:999px;padding:18px 35px;font-size:20px;color:#222}.detail-card textarea{border-radius:20px;min-height:180px;resize:vertical;font-family:Arial,sans-serif}.detail-card input::placeholder,.detail-card textarea::placeholder{color:#777}.complete-box{background:var(--light);width:min(600px,90%);min-height:520px;border-radius:90px;display:flex;align-items:center;justify-content:center;text-align:center;padding:50px;font-family:'Rye',Georgia,serif;font-size:clamp(35px,7vw,64px);margin:0 auto 90px}.hidden{display:none!important}.small-note{color:#fff;font-size:14px;text-align:center;opacity:.85;margin-top:4px}.back{background:transparent;color:white;border:1px solid #ddd;border-radius:30px;padding:12px 24px;cursor:pointer;margin:0 0 24px;align-self:flex-start}.footer-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}.footer-actions button{border:0;border-radius:25px;padding:12px 22px;cursor:pointer;background:#ddd;font-weight:bold}
+@media(max-width:600px){.topbar{padding:0 22px;font-size:18px}.page{padding-left:5%;padding-right:5%;padding-top:48px}.intro{padding-top:55px}.intro-copy{padding:26px 6%;border-radius:30px}.ready{margin:30px 0 38px;padding:25px 10px}.yesno{gap:15px}.yesno .pill{padding:18px 8px}.question-page{padding-top:110px}.question{min-height:170px;margin-bottom:52px;border-radius:75px;padding:25px 20px}.answers{width:85%;gap:24px}.answer{min-height:82px}.detail-card{padding:28px 5% 38px;border-radius:30px;gap:20px}.detail-card input{padding:16px 24px;font-size:17px}.detail-card textarea{padding:17px 23px}.hero-photo{max-height:340px}}
+</style></head>
+<body>
+<header class="topbar">THANHA BEEGUM</header>
+<main>
+<section class="page intro" id="intro">
+  <div class="intro-copy">I’M ASKING YOU QUESTIONS ABOUT MYSELF BECAUSE I’M CURIOUS TO KNOW WHAT YOU KNOW ABOUT ME. THAT’S WHY I SEND ALL THOSE QUESTIONS</div>
+  <button class="pill ready" id="readyBtn">ARE YOU READY?</button>
+  <div class="yesno"><button class="pill" id="yesBtn">YES</button><button class="pill" id="noBtn">NO</button></div>
+</section>
+<img class="hero-photo" src="photo.png" alt="Photo shared by Thanha">
+<section class="page question-page hidden" id="quiz">
+  <button class="back" id="backBtn">← Back</button>
+  <div class="question" id="questionText">MY FAVORITE FOOD?</div>
+  <div class="answers" id="answers"></div>
+  <p class="small-note" id="progress"></p>
+</section>
+<section class="page hidden" id="completed" style="padding-top:100px">
+  <div class="complete-box">YOU COMPLETED THIS</div>
+  <div class="footer-actions"><button id="restartBtn">TRY AGAIN</button></div>
+</section>
+<section class="page" id="detailsPage" style="padding-top:60px">
+  <form class="detail-card" id="detailsForm">
+    <div class="detail-title">DETAILS ABOUT YOU</div>
+    <input name="name" placeholder="NAME :" aria-label="Name">
+    <input name="relation" placeholder="RELATION WITH HER :" aria-label="Relation with her">
+    <textarea name="about" placeholder="ABOUT YOU :" aria-label="About you"></textarea>
+    <div class="footer-actions"><button type="submit">SAVE DETAILS</button><button type="reset">CLEAR</button></div>
+    <p class="small-note" id="saveMessage">Your details stay on this page; this demo does not send them anywhere.</p>
+  </form>
+</section>
+</main>
+<script>
+const questions=[
+ {q:'MY FAVORITE FOOD?',a:['OROTTI','CHAPPATHI','BIRIYANI','OTHER']},
+ {q:'MY FAVORITE COLOR?',a:['RED','BLACK','BROWN','OTHER']},
+ {q:'MY FAVORITE VEHICLE?',a:['BIKE','CAR','BUSS','OTHER']},
+ {q:'MY FAVORITE PLACE?',a:['BEACH','MALL','PARK','OTHER']},
+ {q:'MY FAVORITE HOBBIE?',a:['DRAWING','COOKING','TALKING','OTHER']},
+ {q:'I LIKE PEOPLE?',a:['YES','NO']}
+];
+let current=0;const intro=document.getElementById('intro'),quiz=document.getElementById('quiz'),completed=document.getElementById('completed'),details=document.getElementById('detailsPage');
+function showQuiz(){intro.classList.add('hidden');document.querySelector('.hero-photo').classList.add('hidden');completed.classList.add('hidden');quiz.classList.remove('hidden');details.classList.remove('hidden');renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}
+function renderQuestion(){const item=questions[current];document.getElementById('questionText').textContent=item.q;const answers=document.getElementById('answers');answers.innerHTML='';item.a.forEach(answer=>{const b=document.createElement('button');b.className='pill answer';b.textContent=answer;b.addEventListener('click',()=>{current++;if(current<questions.length)renderQuestion();else showCompleted();window.scrollTo({top:0,behavior:'smooth'});});answers.appendChild(b)});document.getElementById('progress').textContent=`QUESTION ${current+1} OF ${questions.length}`;document.getElementById('backBtn').style.visibility=current===0?'hidden':'visible';}
+function showCompleted(){quiz.classList.add('hidden');completed.classList.remove('hidden');details.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+document.getElementById('yesBtn').addEventListener('click',showQuiz);document.getElementById('readyBtn').addEventListener('click',showQuiz);document.getElementById('noBtn').addEventListener('click',()=>{document.getElementById('readyBtn').textContent='NO WORRIES! COME BACK WHEN YOU’RE READY';});document.getElementById('backBtn').addEventListener('click',()=>{if(current>0){current--;renderQuestion()}else{quiz.classList.add('hidden');intro.classList.remove('hidden');document.querySelector('.hero-photo').classList.remove('hidden')}window.scrollTo({top:0,behavior:'smooth'});});document.getElementById('restartBtn').addEventListener('click',()=>{current=0;showQuiz()});document.getElementById('detailsForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('saveMessage').textContent='Details entered! They are not sent or stored by this demo.';});
+</script></body></html>
